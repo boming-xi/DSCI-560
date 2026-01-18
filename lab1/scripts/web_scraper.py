@@ -27,12 +27,6 @@ with sync_playwright() as p:
     html = page.content()
     browser.close()
 
-
-with open(out_path, "w", encoding="utf-8") as f:
-    f.write(html)
-
-print("Saved rendered HTML to:", os.path.abspath(out_path))
-
 soup = BeautifulSoup(html, "html.parser")
 pretty_html = soup.prettify()
 with open(out_path, "w", encoding="utf-8") as f:
